@@ -5,6 +5,7 @@ import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import axios from 'axios';
+import { logout } from './services/auth';
 
 
 
@@ -17,11 +18,14 @@ function App() {
       .then(response => setLoggedInUser(response.data))
       .catch(err => console.log(err))
   }, [])
-
+  const logoutHandler = () => {
+    logout()
+  }
 
   return (
     <div className="App">
-      <h1>{loggedInUser ?loggedInUser.name:"" }</h1>
+      <h1>{loggedInUser ? loggedInUser.name : ""}</h1>
+      <button type="button" onClick={ logoutHandler} >Logout</button>
       <div >
         <Routes>
           <Route path="/" element={<Home />} />

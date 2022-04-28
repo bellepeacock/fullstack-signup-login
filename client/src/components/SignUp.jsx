@@ -1,19 +1,19 @@
 import React from 'react';
 import { signup } from '../services/auth';
+import { Link, useNavigate } from 'react-router-dom';
 
-import axios from 'axios';
-
-
-
-
-const SignUp = () => {
+const SignUp = (props) => {
+    const navigate = useNavigate();
 
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
  const submitUserRegisteration= ()=>{
-    signup(name,email,password)
+    signup(name,email,password).then(user=>{
+        props.setLoggedInUser(user)
+        navigate('/');
+    })
  }
     return (
         <div className="App">

@@ -1,8 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import { login } from '../services/auth';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
+    const navigate = useNavigate();
+
     const [email, setEmail] = React.useState('');
     const [password, sePassword] = React.useState('');
 
@@ -10,7 +12,10 @@ const Login = () => {
     const handlePasswordChange = (event) => sePassword(event.target.value);
 
     const handleSubmit = () => {
-        login(email, password)
+        login(email, password).then(user => {
+            props.setLoggedInUser(user)
+            navigate('/');
+        })
     };
 
     return (

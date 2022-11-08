@@ -9,8 +9,6 @@ import { logout } from './services/auth';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-
-
 function App() {
   const navigate = useNavigate();
 

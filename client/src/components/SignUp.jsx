@@ -9,12 +9,13 @@ const SignUp = (props) => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
- const submitUserRegisteration= ()=>{
-    signup(name,email,password).then(user=>{
-        props.setLoggedInUser(user)
-        navigate('/');
-    })
- }
+    const submitUserRegisteration= ()=>{
+        signup(name,email,password).then(user=>{
+            props.setLoggedInUser(user)
+            navigate('/');
+        })
+        // console.log('submitting')
+    }
     return (
         <div className="App">
             <input type="text" placeholder="John" name="name" onChange={(event)=> setName(event.target.value)}/>

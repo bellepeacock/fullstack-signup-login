@@ -16,7 +16,7 @@ require('./configs/passport.js');
 const app = express();
 
 mongoose
-  .connect(process.env.MONGO_CONNECT || 'mongodb://localhost/fullstack-signup-login', { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI || 'mongodb://localhost/fullstack-signup-login', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -26,7 +26,7 @@ mongoose
 const cors = require('cors');
 
 app.use(cors());
-const url = 'mongodb://localhost:3000/fullstack-signup-login' || process.env.MONGO_URI;
+const url = 'mongodb://localhost/fullstack-signup-login' || process.env.MONGO_URI;
 let store = new MongoStore({
   mongoUrl: url,
   collection: "sessions"

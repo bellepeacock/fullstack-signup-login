@@ -25,11 +25,25 @@ function App() {
     })
   }
 
+  // condition : true ? false
   return (
     <div className="App">
       <h1>{loggedInUser ? loggedInUser.name : ""}</h1>
-      <button type="button" onClick={ logoutHandler} >Logout</button>
-      <div >
+      {
+        loggedInUser ?
+        <button type="button" onClick={ logoutHandler} >Logout</button>
+        : 
+        <div>
+        <Link to="/signup">
+          <button>Sign up</button>
+        </Link>
+        <Link to="/login">
+          <button>Log in</button>
+        </Link>
+        </div>
+        }
+
+      <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp setLoggedInUser={setLoggedInUser}/>} />

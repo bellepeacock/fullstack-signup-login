@@ -17,3 +17,24 @@
 
 
 // for allergy app—there is getlocale - will give you the location from the browser! Google this to find out more
+
+
+
+
+
+NEXT TIME ::: 
+
+How to change default branch on github
+
+Revise MongoDB— env variables
+
+Logout function—check it and sort the button
+
+FLOW : 
+When a user goes to "/" (home), if no logged in user, 
+ask the user whether they want to log in or sign up (and redirect accordingly), 
+once the user is loggedd in, only show log out & when they're logged out redirect to home and see signup or login buttons
+
+
+https://flexboxfroggy.com/
+

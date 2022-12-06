@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
@@ -7,6 +6,7 @@ import Login from './components/Login';
 import axios from 'axios';
 import { logout } from './services/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import "./css/app.css"
 
 
 function App() {

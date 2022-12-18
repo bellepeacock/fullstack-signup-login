@@ -1,16 +1,18 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Calendar from 'react-calendar';
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import axios from 'axios';
+import { useState } from 'react';
 import { logout } from './services/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import "./css/app.css"
-
+import "./css/app.css";
 
 function App() {
   const navigate = useNavigate();
+  const [date, setDate] = useState(new Date());
 
   const [loggedInUser, setLoggedInUser] = React.useState(null);
   React.useEffect(() => {
@@ -33,7 +35,7 @@ function App() {
         loggedInUser ?
         <button type="button" onClick={ logoutHandler} >Logout</button>
         : 
-        <div>
+        <div className="navBar">
         <Link to="/signup">
           <button>Sign up</button>
         </Link>
@@ -41,7 +43,17 @@ function App() {
           <button>Log in</button>
         </Link>
         </div>
-        }
+      }
+      <div>
+      <h1 className='text-center'>React Calendar</h1>
+      <div className='calendar-container'>
+        <Calendar onChange={setDate} value={date} />
+      </div>
+      <p className='text-center'>
+        <span className='bold'>Selected Date:</span>{' '}
+        {date.toDateString()}
+      </p>
+      </div>
 
       <div>
         <Routes>

@@ -1,11 +1,11 @@
 import React from 'react';
+import CalendarComponent from './CalendarComponent';
 import "../css/app.css";
 
 const Home = () => {
     return (
         <div className="home">
-            <h1 className="header">look at your calender!</h1>
-            i am home
+            <CalendarComponent />
         </div>
     )
 }

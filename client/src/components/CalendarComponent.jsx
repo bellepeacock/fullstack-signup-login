@@ -28,15 +28,16 @@ const CalendarComponent = () => {
             <div className='calendar-container'>
               <Calendar onChange={setDate} value={date} />
             </div>
-            {date.length >= 1 ? (
-              <Link to={`${date}_id/day`}>
-                <h2>Symptom tracker</h2>
+            {date.length >= [1] ? (
+              <Link to={`${date._id}/day`}>
+                <h2>Track your symptoms</h2>
               </Link>
-            ) : () }
-          <p className='text-center'>
-            <span className='bold'>Selected Date:</span>{' '}
-           {date.toDateString()}
-          </p>
+            ) : (
+              <p className='text-center'>
+                <span className='bold'>Selected Date:</span>{' '}
+                 {date.toDateString()}
+              </p>
+            ) }
       </div>
     )
 };

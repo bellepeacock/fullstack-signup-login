@@ -4,7 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import CalendarComponent from "./components/CalendarComponent"
+// import CalendarComponent from "./components/CalendarComponent"
+// import Day from './components/Day';
 import axios from 'axios';
 import { useState } from 'react';
 import { logout } from './services/auth';
@@ -64,6 +65,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp setLoggedInUser={setLoggedInUser}/>} />
           <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser}/>} />
+          {/* <Route path={`${date._id}/day`} element={<Day />} /> */}
         </Routes>
       </div>
     </div>

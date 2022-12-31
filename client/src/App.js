@@ -1,11 +1,11 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import Calendar from 'react-calendar';
+import Calendar from 'react-calendar';
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 // import CalendarComponent from "./components/CalendarComponent"
-// import Day from './components/Day';
+import Day from './components/Day';
 import axios from 'axios';
 import { useState } from 'react';
 import { logout } from './services/auth';
@@ -65,7 +65,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp setLoggedInUser={setLoggedInUser}/>} />
           <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser}/>} />
-          {/* <Route path={`${date._id}/day`} element={<Day />} /> */}
+          <Route path="/day" element={<Day />} />
         </Routes>
       </div>
     </div>

@@ -8,37 +8,48 @@
 
 // part of jsx so keep the calendar functions in here——
 
+//  need to emulate this, but link to day and add symptoms in place of events https://demo.mobiscroll.com/react/eventcalendar/create-read-update-delete-CRUD
+
+// Put the symptoms on the other side of  the pg (split into two) wheere it says what the date is
+
+
 import React from 'react';
 import Calendar from 'react-calendar';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { userSymptoms } from "./Day";
 import 'react-calendar/dist/Calendar.css';
 import "../css/calendar.css";
 
-
 const CalendarComponent = () => {
-    // const navigate = useNavigate();
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState(new Date());   ; 
 
-    //  need to emulate this, but link to day and add symptoms in place of events https://demo.mobiscroll.com/react/eventcalendar/create-read-update-delete-CRUD
-    
     return (
         <div>
           <h1 className='text-center'>React Calendar</h1>
             <div className='calendar-container'>
               <Calendar onChange={setDate} value={date} />
             </div>
+
+            <div>
+
+              
+
+            </div>
+
+
             {date.length >= [1] ? (
-              <Link to={`${date._id}/day`}>
+              <p className="text-area">
                 <h2>Track your symptoms</h2>
-              </Link>
+                <p>{date}</p>
+              </p>
             ) : (
               <p className='text-center'>
                 <span className='bold'>Selected Date:</span>{' '}
                  {date.toDateString()}
               </p>
-            ) }
-      </div>
+            )}
+        </div>
     )
 };
 

@@ -13,10 +13,13 @@ const Day = () => {
 
     // then if the day has +1 in [] array, it gets coded a colour on the calendar
 
+    
+
     return (
         <li>
             <button>{possibleSymptoms}</button>
         </li>
+        
     )
 }
 

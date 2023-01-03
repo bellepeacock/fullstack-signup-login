@@ -22,26 +22,20 @@ import 'react-calendar/dist/Calendar.css';
 import "../css/calendar.css";
 
 const CalendarComponent = () => {
-    const [date, setDate] = useState(new Date());   ; 
+    const [date, setDate] = useState(new Date());
 
     return (
         <div>
           <h1 className='text-center'>React Calendar</h1>
             <div className='calendar-container'>
-              <Calendar onChange={setDate} value={date} />
+              <Calendar onChange={setDate} value={date} onClickDay={(day) => console.log(day) }  />
             </div>
 
             <div>
-
-              
-
-            </div>
-
-
             {date.length >= [1] ? (
               <p className="text-area">
                 <h2>Track your symptoms</h2>
-                <p>{date}</p>
+                <Link to="./Day">{date}</Link>
               </p>
             ) : (
               <p className='text-center'>
@@ -49,6 +43,7 @@ const CalendarComponent = () => {
                  {date.toDateString()}
               </p>
             )}
+            </div>
         </div>
     )
 };

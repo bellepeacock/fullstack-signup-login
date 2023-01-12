@@ -87,27 +87,34 @@ export const Day = () => {
 
     return (
         <div>
-            <form className="container">
+            <form >
+            {possibleSymptoms.map((s) => (
+                <div >
                 <label className="container" onClick={addSymptom()}>
                     <input type="checkbox" />
+                    <textarea value={s.name} />
                     <img className="checkmark" alt="labrador0.1" src="https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559_1280.jpg" /> 
                 </label>
 
-                <label className="container" onClick={addSymptom()}>
+                <label className="container" value={s.name} onClick={addSymptom()}>
                     <input type="checkbox" />
+                    <textarea value={s.name} />
                     <img className="checkmark" alt="labrador" src="https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559_1280.jpg" /> 
                 </label>
 
-                <label className="container" onClick={addSymptom()}>
+                <label className="container" value={s.name} onClick={addSymptom()}>
                     <input type="checkbox"  />
+                    <textarea value={s.name} />
                     <img className="checkmark" alt="labrador1" src="https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559_1280.jpg" /> 
                 </label>
 
-                <label className="container" onClick={addSymptom()}>
+                <label className="container" value={s.name} onClick={addSymptom()}>
                     <input type="checkbox" />
+                    <textarea value={s.name} />
                     <img className="checkmark" alt="labrador2" src="https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559_1280.jpg" />   
                 </label>
-
+                </div>
+            ))}
             </form>
         </div>
 )

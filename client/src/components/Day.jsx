@@ -1,10 +1,10 @@
 import React from "react";
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 
 export const Day = () => {
 
-    // const [userSymptoms, setUserSymptoms] = useState([]);
+    const [userSymptoms, setUserSymptoms] = useState([]);
 
     const possibleSymptoms = [
         {
@@ -36,58 +36,31 @@ export const Day = () => {
         }];
 
     let symptom = possibleSymptoms[0];
-    
-    // const listSymptoms = possibleSymptoms.map((s) => 
-    //     <div>
-    //         <input type="checkbox" value={s.name} />
-    //         <label>{s.name}</label>
-    //     </div>
-    // ); 
 
-    // useEffect(() => {
-    //     localStorage.setUserSymptoms('userSymptoms', JSON.stringify(userSymptoms));
-    //   }, [userSymptoms]);
 
-    // const userSymptoms = localStorage.getItem("userSymptoms");
-
-    const userSymptoms = [];
+    // const userSymptoms = [];
     
     const addSymptom = () => {
-        let newUserSymptoms = [...userSymptoms];
+        let setUserSymptoms = [...userSymptoms];
 
-        newUserSymptoms.push(symptom);
+        setUserSymptoms.push(symptom);
 
-        localStorage.setItem("userSymptoms", JSON.stringify(newUserSymptoms));
+        localStorage.setItem("userSymptoms", JSON.stringify(setUserSymptoms));
     };
-
     console.log(userSymptoms);
 
-    // const listUserSymptoms = userSymptoms.map((s) => 
-    //     <div>
-    //         <input type="checkbox" value={s.name} />
-    //         <label>{s.name}</label>
-    //     </div>
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(userSymptoms)
+    };
 
-    // );
     console.log(userSymptoms.length === 0 ? true : false );
     console.log(userSymptoms);
 
-        // display one checkbox, see how that works [x]
-        // then add the others with the loop [x]
-        // make it into a form, with a submit button (add symptom) and call the function [ ]
-        // want to save these userSymptoms in the db as on this day, this user had xyz [ ]
-        // when the page loads, go to DB and see for this user, this day, what were the symptoms? [ ]
-                // Can always see the entire list to add more, but can see which they've already selected: selected is true
-                // can format the checkbox to be an image (later on!)
 
-        // ^^define the behaviours of the pg really clearly to help code the pg!
-        // draw on paper the final page will look like!! List out all the actions the user can take, e.g. click on this list, log in, —for each action, what is the behaviour you can do [x] 
-            // add to the trello board
-            // msg Lakshmi on Slack next wk with it done!! [x]
-
-    return (
+    return ( 
         <div>
-            <form >
+            <form onSubmit={handleSubmit} addSymptom={addSymptom}>
             {possibleSymptoms.map((s) => (
                 <ul>
                     <li key={s}>
@@ -100,6 +73,7 @@ export const Day = () => {
                 </ul>
             ))}
             </form>
+
         </div>
 )
 };

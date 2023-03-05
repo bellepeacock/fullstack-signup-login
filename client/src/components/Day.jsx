@@ -1,71 +1,127 @@
 import React from "react";
 import { useState } from "react";
 
+
 const Day = () => {
 
-    // create a state to control the form by seeing if checked/unchecked
-    // add checked as an attribute
+    const possibleSymptoms = [
+        {
+            name: "sneezing and coughing",
+            selected: false
+        },
+        {
+            name: "runny or blocked nose",
+            selected: false
+        },
+        {
+            name: "itchy, red or watery eyes",
+            selected: false
+        },
+        {
+            name: "itchy throat, mouth, nose, ears",
+            selected: false
+        },
+        {
+            name: "loss of smell",
+            selected: false
+        }, 
+        {
+            name: "pain around temple or forehead",
+            selected: false
+        },
+        {
+            name: "headache",
+            selected: false
+        },
+        {
+            name: "earache",
+            selected: false
+        }, 
+        {
+            name: "tiredness",
+            selected: false
+        }];
 
- let selectedSymptoms = document.querySelectorAll('input[name="userSymptoms[]"]:checked');
-  
-  const [checkedState, setCheckedState] = useState(
-    new Array(selectedSymptoms.length).fill(false)
-  );
+        let s = possibleSymptoms[0];
 
-  const handleOnChange = (position) => {
-        const updatedCheckedState = checkedState.map((item, index) =>
-        index === position ? !item : item
-        );
-        
-        setCheckedState(updatedCheckedState);
+        const [userSymptoms, setUserSymptoms] = useState([]);
+
+          const handleOnChange = (position) => {
+            setUserSymptoms(s);
+            possibleSymptoms.map((s) => {
+                //  save the names that was checked, and if not checked the delete from the array, so userSymptoms array will just be the names
+                (possibleSymptoms.selected === s.name) ? userSymptoms.push(s.name) : possibleSymptoms.pop(s.name)
+            }); 
+               console.log(userSymptoms);
+              return localStorage.setItem("userSymptoms", JSON.stringify(setUserSymptoms));
+          };
+
+          
+
+    // const addSymptom = () => {
+    //     let newUserSymptoms = [...userSymptoms];
+
+    //     newUserSymptoms.push(symptom);
+
+    //     //change to a remote DB after local storage working!
+    //     localStorage.setItem("userSymptoms", JSON.stringify(newUserSymptoms));
+    // };
+    console.log(userSymptoms);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(event.target.symptoms.value);
+        // addSymptom(setUserSymptoms);
+        console.log(userSymptoms)
     };
 
-    function submitSymptoms(e) {
-        e.preventDefault();
-        console.log("test");
-        // let selectedSymptoms = document.querySelectorAll('input[name="userSymptoms[]"]:checked');
-        for (let symptom of selectedSymptoms) {
-            document.body.append(symptom.value + ', ');
-        };
+    // console.log(userSymptoms.length === 0 ? true : false );
+    // console.log(userSymptoms);
+
 
      return ( 
+    //   <div className="App">
+    //   <h3>Select Toppings</h3>
+    //   <ul className="symptoms-list">
+    //     {possibleSymptoms.map(({ name }, index) => {
+    //       return (
+    //         <li key={index}>
+    //           <div className="symptoms-list-item">
+    //             <div className="left-section">
+    //               <input
+    //                 type="checkbox"
+    //                 id={`custom-checkbox-${index}`}
+    //                 name={possibleSymptoms.name}
+    //                 value={possibleSymptoms.name}
+    //                 checked={checkedState[index]}
+    //                 onChange={() => handleOnChange(index)}
+    //               />
+    //               <label htmlFor={`custom-checkbox-${index}`}>{possibleSymptoms.name}</label>
+    //             </div>
+    //           </div>
+    //         </li>
+    //       );
+    //     })}
+    //   </ul>
+    // </div>
+
         <div>
-            <form id="test" onsubmit={submitSymptoms}>  
-                        {/* <input type="checkbox" name="{userSymptoms[]}" value="sneezing and coughing" checked={checkedState} */}
-                                {/* onChange={(setCheckedState) => handleOnChange()} /> */}
-                        <span>sneezing and coughing</span>
-                        {/* <input type="checkbox" name="userSymptoms[]" value="runny or blocked nose" checked={checkedState} */}
-                                {/* onChange={(setCheckedState) => handleOnChange()}/> */}
-                        <span>runny or blocked nose</span>
-                        <button type="submit">save symptoms</button>
-                </form>
-            {/* 
-            <input type="checkbox" name="userSymptoms[]" value="itchy, red or watery eyese" checked={checkedState}
-                    onChange={(setCheckedState) => handleOnChange()} />
-            <span>itchy, red or watery eyes</span>
-            <input type="checkbox" name="userSymptoms[]" value="itchy throat, mouth, nose, ears" checked={checkedState}
-                    onChange={(setCheckedState) => handleOnChange()} />
-            <span>itchy throat, mouth, nose, ears</span>
-            <input type="checkbox" name="userSymptoms[]" value="loss of smell" checked={checkedState}
-                    onChange={(setCheckedState) => handleOnChange()} />
-            <span>loss of smell</span>
-            <input type="checkbox" name="userSymptoms[]" value="pain around temple or forehead" checked={checkedState}
-                    onChange={(setCheckedState) => handleOnChange()} />
-            <span>pain around temple or forehead</span>
-            <input type="checkbox" name="userSymptoms[]" value="headache" checked={checkedState}
-                    onChange={(setCheckedState) => handleOnChange()} />
-            <span>headache</span>
-            <input type="checkbox" name="userSymptoms[]" value="earache" checked={checkedState}
-                    onChange={(setCheckedState) => handleOnChange()} />
-            <span>earache</span>
-            <input type="checkbox" name="userSymptoms[]" value="tiredness" checked={checkedState}
-                    onChange={(setCheckedState) => handleOnChange()} />
-            <span>tiredness</span> */}
+            <form onSubmit={handleSubmit} >
+            {possibleSymptoms.map((s) => (
+                <ul>
+                    <li key={s}>
+                        <label className="container" >
+                            <input type="checkbox" name="symptoms" checked={s.selected} onChange={() => handleOnChange(s.name)} />
+                            <textarea value={s.name} />
+                            {/* <img className="checkmark" alt="labrador0.1" src="https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559_1280.jpg" />  */}
+                        </label>
+                    </li>
+                </ul>
+            ))}
+             <button>Submit</button>
+            </form>
         </div>
-
-)       
+)
 };
-};
-
 
 export default Day;

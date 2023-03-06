@@ -49,12 +49,16 @@ const Day = () => {
           const handleOnChange = (position) => {
             setUserSymptoms(s);
             possibleSymptoms.map((s) => {
+                s.checked = s.name ? userSymptoms.push(s.name) : userSymptoms.pop(s.name)
                 //  save the names that was checked, and if not checked the delete from the array, so userSymptoms array will just be the names
-                (possibleSymptoms.selected === s.name) ? userSymptoms.push(s.name) : possibleSymptoms.pop(s.name)
+                // (possibleSymptoms.checked === s.name) ? (userSymptoms.push(s.name) && s.selected === true ) : possibleSymptoms.pop(s.name)
+                return setUserSymptoms(userSymptoms);
             }); 
-               console.log(userSymptoms);
-              return localStorage.setItem("userSymptoms", JSON.stringify(setUserSymptoms));
+              
+            console.log(userSymptoms)
+            localStorage.setItem("userSymptoms", JSON.stringify(setUserSymptoms));
           };
+          
 
           
 
@@ -111,7 +115,7 @@ const Day = () => {
                 <ul>
                     <li key={s}>
                         <label className="container" >
-                            <input type="checkbox" name="symptoms" checked={s.selected} onChange={() => handleOnChange(s.name)} />
+                            <input type="checkbox" name="symptoms" checked={s.selected} onChange={() => handleOnChange(s.name, s.selected)} />
                             <textarea value={s.name} />
                             {/* <img className="checkmark" alt="labrador0.1" src="https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559_1280.jpg" />  */}
                         </label>

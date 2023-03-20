@@ -1,0 +1,59 @@
+
+DAY COMPONENT:
+
+        // display one checkbox, see how that works [x]
+        // then add the others with the loop [x]
+        // make it into a form, with a submit button (add symptom) and call the function [ ]
+        // want to save these userSymptoms in the db as on this day, this user had xyz [ ]
+        // when the page loads, go to DB and see for this user, this day, what were the symptoms? [ ]
+                // Can always see the entire list to add more, but can see which they've already selected: selected is true
+                // can format the checkbox to be an image (later on!)
+
+        // ^^define the behaviours of the pg really clearly to help code the pg!
+        // draw on paper the final page will look like!! List out all the actions the user can take, e.g. click on this list, log in, —for each action, what is the behaviour you can do [x] 
+            // add to the trello board
+            // msg Lakshmi on Slack next wk with it done!! [x]
+
+
+––––––––––––
+
+need to put the auth buttons and others into a navbar—create new component for this in a bit
+
+day logic : CRUD symptoms, save
+
+CONNECT TO ALLERGIES api
+    EMAIL THEM!
+
+REALLY i want to put the calendar into the homepage and then when you click on a day, that's when you're prompted to log in
+
+Need to work out where to put everything, layout-wise
+
+––––––––––––
+
+;  { userSymptoms.length === 0 ? ( 
+;        <ul>
+;             {listSymptoms}
+            
+;             <button onClick={addSymptom}>Add symptom</button>
+;         </ul>
+;         ) : (
+;             <ul>
+;             {/* {listUserSymptoms}    */}
+;             {/* edit or delete symptoms button! */}
+;             </ul>
+;         )
+;         }
+
+
+    ; // const listSymptoms = possibleSymptoms.map((s) => 
+    ; //     <div>
+    ; //         <input type="checkbox" value={s.name} />
+    ; //         <label>{s.name}</label>
+    ; //     </div>
+    ; // ); 
+
+    ; // useEffect(() => {
+    ; //     localStorage.setUserSymptoms('userSymptoms', JSON.stringify(userSymptoms));
+    ; //   }, [userSymptoms]);
+
+    ; // const userSymptoms = localStorage.getItem("userSymptoms");

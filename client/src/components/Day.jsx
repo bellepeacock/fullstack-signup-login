@@ -7,107 +7,72 @@ const Day = () => {
     const possibleSymptoms = [
         {
             name: "sneezing and coughing",
-            selected: false
+            // selected: false
         },
         {
             name: "runny or blocked nose",
-            selected: false
+            // selected: false
         },
         {
             name: "itchy, red or watery eyes",
-            selected: false
+            // selected: false
         },
         {
             name: "itchy throat, mouth, nose, ears",
-            selected: false
+            // selected: false
         },
         {
             name: "loss of smell",
-            selected: false
+            // selected: false
         }, 
         {
             name: "pain around temple or forehead",
-            selected: false
+            // selected: false
         },
         {
             name: "headache",
-            selected: false
+            // selected: false
         },
         {
             name: "earache",
-            selected: false
+            // selected: false
         }, 
         {
             name: "tiredness",
-            selected: false
+            // selected: false
         }];
 
         let s = possibleSymptoms[0];
 
-        const [userSymptoms, setUserSymptoms] = useState([]);
+        // tell the DOM what to toggle between when doing so between checked and unchecked
 
-          const handleOnChange = (position) => {
-            setUserSymptoms(s);
-            possibleSymptoms.map((s) => {
-                s.checked = s.name ? userSymptoms.push(s.name) : userSymptoms.pop(s.name)
-                //  save the names that was checked, and if not checked the delete from the array, so userSymptoms array will just be the names
-                // (possibleSymptoms.checked === s.name) ? (userSymptoms.push(s.name) && s.selected === true ) : possibleSymptoms.pop(s.name)
-                return setUserSymptoms(userSymptoms);
-            }); 
-              
-            console.log(userSymptoms)
-            localStorage.setItem("userSymptoms", JSON.stringify(setUserSymptoms));
-          };
-          
+        const [checkedState, setCheckedState] = useState(
+            new Array(possibleSymptoms.length).fill(false)
+        );
 
-          
+        const handleOnChange = (position) => {
+        const updatedCheckedState = checkedState.map((item, index) =>
+            index === position ? !item : item
+        );
+        
+        
+        console.log(possibleSymptoms)
 
-    // const addSymptom = () => {
-    //     let newUserSymptoms = [...userSymptoms];
+        setCheckedState(updatedCheckedState);
+        };
 
-    //     newUserSymptoms.push(symptom);
-
-    //     //change to a remote DB after local storage working!
-    //     localStorage.setItem("userSymptoms", JSON.stringify(newUserSymptoms));
-    // };
-    console.log(userSymptoms);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(event.target.symptoms.value);
         // addSymptom(setUserSymptoms);
-        console.log(userSymptoms)
+        // console.log(userSymptoms)
     };
 
-    // console.log(userSymptoms.length === 0 ? true : false );
-    // console.log(userSymptoms);
 
 
      return ( 
-    //   <div className="App">
-    //   <h3>Select Toppings</h3>
-    //   <ul className="symptoms-list">
-    //     {possibleSymptoms.map(({ name }, index) => {
-    //       return (
-    //         <li key={index}>
-    //           <div className="symptoms-list-item">
-    //             <div className="left-section">
-    //               <input
-    //                 type="checkbox"
-    //                 id={`custom-checkbox-${index}`}
-    //                 name={possibleSymptoms.name}
-    //                 value={possibleSymptoms.name}
-    //                 checked={checkedState[index]}
-    //                 onChange={() => handleOnChange(index)}
-    //               />
-    //               <label htmlFor={`custom-checkbox-${index}`}>{possibleSymptoms.name}</label>
-    //             </div>
-    //           </div>
-    //         </li>
-    //       );
-    //     })}
-    //   </ul>
-    // </div>
+
 
         <div>
             <form onSubmit={handleSubmit} >

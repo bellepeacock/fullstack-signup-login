@@ -56,16 +56,16 @@ const Day = () => {
         //loop over the checkedState array using the array map method. 
         //If the value of the passed position parameter matches with the current index, then we reverse its value. Then, if the value is true it will be converted to false using !item and if the value is false, then it will be converted to true.
         const handleOnChange = (position) => {
-        const updateCheckedState = checkedState.map((s, index) =>
+        const updatedCheckedState = checkedState.map((s, index) =>
             index === position ? !s : s
         );
-        setCheckedState(updateCheckedState);
+        setCheckedState(updatedCheckedState);
 
         //and if the symptom is checked, then add it to userSymptoms array
-        const updateUserSymptons = possibleSymptoms.map((s) => 
-            s === setCheckedState[s] ? userSymptoms.push(s) : userSymptoms.pop(s)
+        const updatedUserSymptons = updatedCheckedState.map((s) => 
+            s === true ? (possibleSymptoms.pop(s) && userSymptoms.push(s)) : possibleSymptoms.push(s)
         )
-        setUserSymptoms(updateUserSymptons);
+        setUserSymptoms(updatedUserSymptons);
         console.log(userSymptoms)
         };
 
@@ -84,7 +84,7 @@ const Day = () => {
           {possibleSymptoms.map(({ name }, index) => {
             return (
               <li key={index}>
-                <div className="toppings-list-item">
+                <div className="possible-symptoms-list">
                     <input
                       type="checkbox"
                       id={`custom-checkbox-${index}`}

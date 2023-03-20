@@ -42,54 +42,56 @@ const Day = () => {
             // selected: false
         }];
 
-        let s = possibleSymptoms[0];
+        // let s = possibleSymptoms[0];
 
         // tell the DOM what to toggle between when doing so between checked and unchecked
-
         const [checkedState, setCheckedState] = useState(
             new Array(possibleSymptoms.length).fill(false)
         );
 
+        //loop over the checkedState array using the array map method. 
+        //If the value of the passed position parameter matches with the current index, then we reverse its value. Then, if the value is true it will be converted to false using !item and if the value is false, then it will be converted to true.
         const handleOnChange = (position) => {
         const updatedCheckedState = checkedState.map((item, index) =>
             index === position ? !item : item
         );
-        
         
         console.log(possibleSymptoms)
 
         setCheckedState(updatedCheckedState);
         };
 
+        //upon submit, save the symptoms to the user
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(event.target.symptoms.value);
-        // addSymptom(setUserSymptoms);
-        // console.log(userSymptoms)
-    };
 
 
 
      return ( 
-
-
-        <div>
-            <form onSubmit={handleSubmit} >
-            {possibleSymptoms.map((s) => (
-                <ul>
-                    <li key={s}>
-                        <label className="container" >
-                            <input type="checkbox" name="symptoms" checked={s.selected} onChange={() => handleOnChange(s.name, s.selected)} />
-                            <textarea value={s.name} />
-                            {/* <img className="checkmark" alt="labrador0.1" src="https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559_1280.jpg" />  */}
-                        </label>
-                    </li>
-                </ul>
-            ))}
-             <button>Submit</button>
-            </form>
-        </div>
+        <div className="App">
+        <h3>Select symptoms</h3>
+        <form>
+        <ul className="symptoms-list">
+          {possibleSymptoms.map(({ name }, index) => {
+            return (
+              <li key={index}>
+                <div className="toppings-list-item">
+                    <input
+                      type="checkbox"
+                      id={`custom-checkbox-${index}`}
+                      name={name}
+                      value={name}
+                      checked={checkedState[index]}
+                      onChange={() => handleOnChange(index)}
+                    />
+                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+        <input type="submit" value="Submit" />
+        </form>
+      </div>
 )
 };
 

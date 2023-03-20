@@ -49,9 +49,7 @@ const Day = () => {
             new Array(possibleSymptoms.length).fill(false)
         );
 
-        const [userSymptoms, setUserSymptoms] = useState(
-            new Array(possibleSymptoms.length)
-        );
+        const [userSymptoms, setUserSymptoms] = useState([]);
 
         //loop over the checkedState array using the array map method. 
         //If the value of the passed position parameter matches with the current index, then we reverse its value. Then, if the value is true it will be converted to false using !item and if the value is false, then it will be converted to true.
@@ -62,7 +60,7 @@ const Day = () => {
         setCheckedState(updatedCheckedState);
 
         //and if the symptom is checked, then add it to userSymptoms array
-        const updatedUserSymptons = updatedCheckedState.map((s) => 
+        const updatedUserSymptons = possibleSymptoms.map((s) => 
             s === true ? (possibleSymptoms.pop(s) && userSymptoms.push(s)) : possibleSymptoms.push(s)
         )
         setUserSymptoms(updatedUserSymptons);

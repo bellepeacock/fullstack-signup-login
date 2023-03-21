@@ -60,7 +60,7 @@ const Day = () => {
         setCheckedState(updatedCheckedState);
         //and if the symptom is checked, then add it to userSymptoms array
         const updatedUserSymptoms = possibleSymptoms.map((s, index) =>
-            index === position ? !s : userSymptoms.pop(s)
+            index !== position ? !s : userSymptoms.pop(s)
         )
 
         setUserSymptoms(updatedUserSymptoms);

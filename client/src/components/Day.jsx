@@ -44,7 +44,6 @@ const Day = () => {
 
         // let s = possibleSymptoms[0];
 
-        // tell the DOM what to toggle between when doing so between checked and unchecked
         const [checkedState, setCheckedState] = useState(
             new Array(possibleSymptoms.length).fill(false)
         );
@@ -55,18 +54,26 @@ const Day = () => {
         //If the value of the passed position parameter matches with the current index, then we reverse its value. Then, if the value is true it will be converted to false using !item and if the value is false, then it will be converted to true.
         const handleOnChange = (position) => {
         const updatedCheckedState = checkedState.map((s, index) =>
+        //need to add for if the index is 0; could try the longform version of ternary
             index === position ? !s : s
         )
         setCheckedState(updatedCheckedState);
-        //and if the symptom is checked, then add it to userSymptoms array
-        const updatedUserSymptoms = possibleSymptoms.map((s, index) =>
-            index !== position ? !s : userSymptoms.pop(s)
+        console.log(updatedCheckedState);
+
+                //and if the symptom is checked, then add it to userSymptoms array
+        const updatedUserSymptoms = checkedState.map((s, index) =>
+            index === position ? !s : userSymptoms.pop(s)
         )
 
         setUserSymptoms(updatedUserSymptoms);
-        };
+            // check which symptom it is printing
+        console.log(userSymptoms);
+        }
 
-        console.log(userSymptoms)  
+
+                
+
+  
 
 
         // const (handleSubmit) => {

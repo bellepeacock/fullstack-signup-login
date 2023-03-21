@@ -49,31 +49,29 @@ const Day = () => {
             new Array(possibleSymptoms.length).fill(false)
         );
 
-        const [userSymptoms, setUserSymptoms] = useState([]);
+        const [userSymptoms, setUserSymptoms] = useState([ ...possibleSymptoms]);
 
         //loop over the checkedState array using the array map method. 
         //If the value of the passed position parameter matches with the current index, then we reverse its value. Then, if the value is true it will be converted to false using !item and if the value is false, then it will be converted to true.
         const handleOnChange = (position) => {
         const updatedCheckedState = checkedState.map((s, index) =>
             index === position ? !s : s
-        );
-        setCheckedState(updatedCheckedState);
-
-        //and if the symptom is checked, then add it to userSymptoms array
-        const updatedUserSymptons = possibleSymptoms.map((s) => 
-            s === true ? (possibleSymptoms.pop(s) && userSymptoms.push(s)) : possibleSymptoms.push(s)
         )
-        setUserSymptoms(updatedUserSymptons);
-        console.log(userSymptoms)
+        setCheckedState(updatedCheckedState);
+        //and if the symptom is checked, then add it to userSymptoms array
+        const updatedUserSymptoms = possibleSymptoms.map((s, index) =>
+            index === position ? !s : userSymptoms.pop(s)
+        )
+
+        setUserSymptoms(updatedUserSymptoms);
         };
 
-        //if item is checked, save it to user
+        console.log(userSymptoms)  
 
 
         // const (handleSubmit) => {
         //     const updatedUserSymptons = 
-        // } 
-
+        // 
      return ( 
         <div className="App">
         <h3>Select symptoms</h3>

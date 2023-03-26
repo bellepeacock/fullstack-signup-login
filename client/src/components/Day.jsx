@@ -44,37 +44,27 @@ const Day = () => {
 
         // let s = possibleSymptoms[0];
 
-        const [checkedState, setCheckedState] = useState(
-            new Array(possibleSymptoms.length).fill(false)
-        );
+        // const [checkedState, setCheckedState] = useState(
+        //     new Array(possibleSymptoms.length).fill(false)
+        // );
 
-        const [userSymptoms, setUserSymptoms] = useState([ ...possibleSymptoms]);
+        const [checkedState, setCheckedState] = useState(false);
 
+        const [userSymptoms, setUserSymptoms] = useState([]);
         //loop over the checkedState array using the array map method. 
         //If the value of the passed position parameter matches with the current index, then we reverse its value. Then, if the value is true it will be converted to false using !item and if the value is false, then it will be converted to true.
-        const handleOnChange = (position) => {
-        const updatedCheckedState = checkedState.map((s, index) =>
-        //need to add for if the index is 0; could try the longform version of ternary
-            index === position ? !s : s
-        )
-        setCheckedState(updatedCheckedState);
-        console.log(updatedCheckedState);
-
-                //and if the symptom is checked, then add it to userSymptoms array
-        const updatedUserSymptoms = checkedState.map((s, index) =>
-            index === position ? !s : userSymptoms.pop(s)
-        )
-
-        setUserSymptoms(updatedUserSymptoms);
-            // check which symptom it is printing
-        console.log(userSymptoms);
+        const handleOnChange = (s, value, position) => {
+                console.log(typeof userSymptoms);
+                let symptoms = [ ...userSymptoms];
+                if (symptoms.includes(value)) {
+                 symptoms = symptoms.filter(function(e) { return e !== value })             
+                } else {
+                 symptoms.push(value);
+                }
+                setCheckedState(true);
+                setUserSymptoms(symptoms);
+                console.log(userSymptoms);
         }
-
-
-                
-
-  
-
 
         // const (handleSubmit) => {
         //     const updatedUserSymptons = 
@@ -94,7 +84,7 @@ const Day = () => {
                       name={name}
                       value={name}
                       checked={checkedState[index]}
-                      onChange={() => handleOnChange(index)}
+                      onChange={() => handleOnChange(index, name)}
                     />
                     <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
                 </div>

@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import "../css/app.css";
+import "../css/checklist.css"
 
 
 const Day = () => {
@@ -51,29 +53,31 @@ const Day = () => {
         const [checkedState, setCheckedState] = useState(false);
 
         const [userSymptoms, setUserSymptoms] = useState([]);
+
         //loop over the checkedState array using the array map method. 
         //If the value of the passed position parameter matches with the current index, then we reverse its value. Then, if the value is true it will be converted to false using !item and if the value is false, then it will be converted to true.
         const handleOnChange = (s, value, position) => {
-                console.log(typeof userSymptoms);
                 let symptoms = [ ...userSymptoms];
+  
                 if (symptoms.includes(value)) {
-                 symptoms = symptoms.filter(function(e) { return e !== value })             
+                  symptoms = symptoms.filter( (s) => s !== value)
                 } else {
-                 symptoms.push(value);
+                  symptoms.push(value);
                 }
-                setCheckedState(true);
                 setUserSymptoms(symptoms);
-                console.log(userSymptoms);
-        }
 
-        // const (handleSubmit) => {
-        //     const updatedUserSymptons = 
-        // 
+                console.log(symptoms);
+                console.log(userSymptoms);
+        };
+
+        // function working but not updating immediately for symptoms, not updating userSymptoms ^^
+
+
      return ( 
-        <div className="App">
+        <div className="App home">
         <h3>Select symptoms</h3>
         <form>
-        <ul className="symptoms-list">
+        <ul className="symptoms-list checklist">
           {possibleSymptoms.map(({ name }, index) => {
             return (
               <li key={index}>
@@ -84,7 +88,7 @@ const Day = () => {
                       name={name}
                       value={name}
                       checked={checkedState[index]}
-                      onChange={() => handleOnChange(index, name)}
+                      onClick={() => handleOnChange(index, name)}
                     />
                     <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
                 </div>

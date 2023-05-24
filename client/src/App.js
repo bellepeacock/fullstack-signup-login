@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { logout } from './services/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import "./css/app.css";
+import "./css/navbar.css";
 
 function App() {
   const navigate = useNavigate();

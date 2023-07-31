@@ -46,8 +46,12 @@ const Day = () => {
 
      // handler to save user symptoms to DB when the user clicks on Save
      const saveUserSymptoms = () => {
-        // write code to save the user symptoms into the DB
-        // can directly access all the selected user symptoms from the state and save them
+        
+
+        // write code to save the user symptoms into the DB >>
+        // create a route (in server side) to do this [ ]
+        // POST method --> add userSymptoms as a new type of schema to the user > get it from the state and post upon submit
+        // change the 
     };
 
     return (

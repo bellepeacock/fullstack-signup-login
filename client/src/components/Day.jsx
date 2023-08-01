@@ -4,6 +4,7 @@ import "../css/app.css";
 import "../css/checklist.css"
 
 
+
 const Day = () => {
       
     // list of all the symptoms

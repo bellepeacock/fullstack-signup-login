@@ -4,8 +4,16 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
+// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.post('/signup', (req, res, next) => {
+router.get("/loggedin", (req, res) => {
+    res.json(req.user);
+  });
+
+
+router.post('/signup', isLoggedOut, (req, res, next) => {
     const { name, email, password } = req.body;
 
     if (password.length < 8) {
@@ -71,5 +79,9 @@ router.delete('/logout', (req, res) => {
 router.get('/loggedin', (req, res) => {
     res.json(req.user);
 })
+
+
+
+
 
 module.exports = router;

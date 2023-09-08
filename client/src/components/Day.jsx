@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
+// import { Link, useNavigate } from 'react-router-dom';
 import "../css/app.css";
-import "../css/checklist.css"
+// import "../css/checklist.css";
+// import "../../"
 
 
 
@@ -35,7 +37,7 @@ const Day = () => {
     // handler to update user symptoms when logged in user checks / unchecks a symptom
     const handleToggleUserSymptoms = (symptomName, isChecked) => {
         setUserSymptoms( userSymptoms.map( s => {
-            if (s.name == symptomName) {
+            if (s.name === symptomName) {
                 // update the state with the current status (checked or unchecked)
                 return { ...s, checked: isChecked};
             } else {
@@ -46,14 +48,16 @@ const Day = () => {
     };
 
      // handler to save user symptoms to DB when the user clicks on Save
-     const saveUserSymptoms = () => {
-        
+    const saveSymptom = () => {
 
-        // write code to save the user symptoms into the DB >>
-        // create a route (in server side) to do this [ ]
-        // POST method --> add userSymptoms as a new type of schema to the user > get it from the state and post upon submit
-        // change the 
-    };
+
+    }
+        
+        // const submitSymptom = await new Symptom 
+
+     }
+            
+
 
     return (
         <div className="App home">
@@ -62,7 +66,7 @@ const Day = () => {
                 <ListSymptoms 
                     items={userSymptoms}
                     onToggle={handleToggleUserSymptoms}/>
-                <input type="button" value="Save" onClick={() => saveUserSymptoms()}/>
+                <input type="button" value="Save" onClick={() => {saveSymptom()}}/>
             </form>
         </div>
     );

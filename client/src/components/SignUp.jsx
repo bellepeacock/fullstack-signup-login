@@ -9,7 +9,7 @@ const SignUp = (props) => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
-    const submitUserRegisteration= ()=>{
+    const submitUserRegisteration= () => {
         signup(name,email,password).then(user=>{
             props.setLoggedInUser(user)
             navigate('/');

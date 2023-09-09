@@ -48,14 +48,21 @@ const Day = () => {
     };
 
      // handler to save user symptoms to DB when the user clicks on Save
-    const saveSymptom = () => {
+    const saveSymptoms = () => {
+
+
+        console.log('what i need from model')
+
+
+        //once ive confirmed console.log works 
+        // save date selected, user from logged in session, save entire list of symptoms—pass it as an array[]  
+        //symptoms array set in userSymptoms state
+        //save model object 
 
 
     }
-        
-        // const submitSymptom = await new Symptom 
 
-     }
+     
             
 
 
@@ -66,7 +73,7 @@ const Day = () => {
                 <ListSymptoms 
                     items={userSymptoms}
                     onToggle={handleToggleUserSymptoms}/>
-                <input type="button" value="Save" onClick={() => {saveSymptom()}}/>
+                <input type="button" value="Save" onClick={() => saveSymptoms()}/>
             </form>
         </div>
     );

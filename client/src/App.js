@@ -19,7 +19,7 @@ function App() {
 
   const [loggedInUser, setLoggedInUser] = React.useState(null);
   React.useEffect(() => {
-    axios.get('/api/auth/loggedin')
+    axios.get('http://localhost:3005/api/')
       .then(response => setLoggedInUser(response.data))
       .catch(err => console.log(err))
   }, [])

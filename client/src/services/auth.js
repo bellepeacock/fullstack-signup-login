@@ -15,6 +15,7 @@ const signup = (name, email, password) => {
 
 const login = (email, password) => {
     return axios
+    //tried switching to: http://localhost:3005/api/login : also for signup and logout
         .post('/auth/login', { email, password })
         .then(response => {
             return response.data;
@@ -26,7 +27,7 @@ const login = (email, password) => {
 
 const logout = () => {
     return axios
-        .delete('/logout')
+        .delete('/auth/logout')
         .then(response => {
             return response.data;
         })
